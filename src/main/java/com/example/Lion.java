@@ -3,23 +3,23 @@ package com.example;
 import java.util.List;
 
 public class Lion {
+    private final Predator predator;
+    private final boolean hasMane;
 
-    boolean hasMane;
+    public Lion(String sex, Predator predator) throws Exception {
+        this.predator = predator;
 
-    public Lion(String sex) throws Exception {
         if ("Самец".equals(sex)) {
-            hasMane = true;
+            this.hasMane = true;
         } else if ("Самка".equals(sex)) {
-            hasMane = false;
+            this.hasMane = false;
         } else {
-            throw new Exception("Используйте допустимые значения пола животного - самей или самка");
+            throw new Exception("Укажите пол животного");
         }
     }
 
-    Feline feline = new Feline();
-
     public int getKittens() {
-        return feline.getKittens();
+        return predator.getKittens();
     }
 
     public boolean doesHaveMane() {
@@ -27,6 +27,7 @@ public class Lion {
     }
 
     public List<String> getFood() throws Exception {
-        return feline.getFood("Хищник");
+        return predator.eatMeat();
     }
 }
+
